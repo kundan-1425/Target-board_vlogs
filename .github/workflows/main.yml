@@ -25,15 +25,19 @@ jobs:
 
           echo "[+] Building the project..."
           npm run build
+        shell: bash
 
       - name: Install rsync and sshpass
         run: |
           sudo apt-get update
           sudo apt-get install -y sshpass rsync openssh-client
+        shell: bash
 
       - name: Rsync files to targetboard
-        run: devops/scripts/build.sh
-        
+        run: bash devops/scripts/build.sh
+        shell: bash
+
       - name: Restart PM2 process remotely
-        run: devops/scripts/start.sh   
-EOF
+        run: bash devops/scripts/start.sh
+        shell: bash
+
