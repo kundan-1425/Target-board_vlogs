@@ -22,5 +22,5 @@ sshpass -p "$REMOTE_PASSWORD" ssh -tt -o StrictHostKeyChecking=no -o LogLevel=ER
   echo "[+] Building the project..."
   npm run build
 
-  exit
+  exit 0
 EOF

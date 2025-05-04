@@ -15,4 +15,6 @@ sshpass -p "$REMOTE_PASSWORD" ssh -tt -o StrictHostKeyChecking=no -o LogLevel=ER
 
   echo "[+] Restarting PM2 process 'frontend'..."
   pm2 restart frontend
+  
+  exit 0
 EOF
