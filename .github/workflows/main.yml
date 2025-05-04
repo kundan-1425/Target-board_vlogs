@@ -10,16 +10,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the repo
+      - name: Checkout the repository
         uses: actions/checkout@v3
 
-      - name: Install dependencies
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Install dependencies and build
+        run: |
+          echo "[+] Installing dependencies..."
+          npm install
+
+          echo "[+] Building the project..."
+          npm run build
+
+      - name: Install rsync and sshpass
         run: |
           sudo apt-get update
-          sudo apt-get install -y sshpass openssh-client
+          sudo apt-get install -y sshpass rsync openssh-client
 
-      - name: Run remote build commands via SSH
-        run: bash devops/scripts/deploy.sh
-
-      - name: Run remote start commands via SSH
-        run: bash devops/scripts/start.sh
+      - name: Rsync files to targetboard
+        run: devops/scripts/build.sh
+        
+      - name: Restart PM2 process remotely
+        run: devops/scripts/start.sh   
+EOF

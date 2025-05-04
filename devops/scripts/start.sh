@@ -13,6 +13,10 @@ sshpass -p "$REMOTE_PASSWORD" ssh -tt -o StrictHostKeyChecking=no -o LogLevel=ER
   echo "[+] Navigating to project directory..."
   cd /root/Target-board_vlogs
 
+  git pull
+	
+  npm install
+
   echo "[+] Restarting PM2 process 'frontend'..."
   pm2 restart frontend
   
