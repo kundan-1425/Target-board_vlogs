@@ -27,7 +27,7 @@ export default function BlogPostPage() {
 
     const fetchPost = async () => {
       try {
-        const response = await fetch(`http://64.227.133.141:1337/api/latest-updates/${documentId}?populate=*`)
+        const response = await fetch(`https://teachmantra.com/api/latest-updates/${documentId}?populate=*`)
         const data = await response.json()
         
         const formattedPost = {
@@ -35,7 +35,7 @@ export default function BlogPostPage() {
           documentId: data.data.documentId,
           title: data.data.title,
           excerpt: data.data.Excerpt,
-          image: `http://64.227.133.141:1337${data.data.image[0]?.url || '/uploads/default.jpg'}`,
+          image: `https://teachmantra.com${data.data.image[0]?.url || '/uploads/default.jpg'}`,
           date: new Date(data.data.date).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',

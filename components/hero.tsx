@@ -30,14 +30,14 @@ export default function Hero() {
   useEffect(() => {
     const fetchSlides = async () => {
       try {
-        const response = await fetch("http://64.227.133.141:1337/api/sliders?populate=*")
+        const response = await fetch("https://teachmantra.com/api/sliders?populate=*")
         const data = await response.json()
         
         // Transform API data to match the required format
         const formattedSlides = data.data.map((item: any) => ({
           id: item.id,
           // Use the image URL from the API response
-          image: `http://64.227.133.141:1337${item.slider_image[0].url}`,
+          image: `https://teachmantra.com${item.slider_image[0].url}`,
           title: item.title,
           description: item.excerpt,
           gradient: item.gradient

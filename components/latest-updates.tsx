@@ -38,7 +38,7 @@ export default function LatestUpdates() {
   useEffect(() => {
     const fetchBlogPosts = async () => {
       try {
-        const response = await fetch("http://64.227.133.141:1337/api/latest-updates?populate=*")
+        const response = await fetch("https://teachmantra.com/api/latest-updates?populate=*")
         const data = await response.json()
         
         // Transform API data to match the required format
@@ -47,7 +47,7 @@ export default function LatestUpdates() {
           documentId: item.documentId, // Add documentId
           title: item.title,
           excerpt: item.Excerpt,
-          image: `http://64.227.133.141:1337${item.image[0]?.url || '/uploads/default.jpg'}`,
+          image: `https://teachmantra.com${item.image[0]?.url || '/uploads/default.jpg'}`,
           date: new Date(item.date).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',

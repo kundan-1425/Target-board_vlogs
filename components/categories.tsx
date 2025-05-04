@@ -65,7 +65,7 @@ export default function Categories() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch("http://64.227.133.141:1337/api/categories/?populate=*")
+        const response = await fetch("https://teachmantra.com/api/categories/?populate=*")
         const data = await response.json()
         
         // Transform API data and assign bgColors
